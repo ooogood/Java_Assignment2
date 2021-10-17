@@ -1,9 +1,10 @@
-public class BattleShip {
+public class Battleship {
+	// todo: I don't know what is "the position" and "active" in the spec mean...
 	private boolean m_bSunk = false;
 	private int m_nHealth = 0;
 	private int m_nSize = 0;
 // constructor
-	public BattleShip( int size ) {
+	public Battleship( int size ) {
 		// rule: battleship's health equals to batlleship's size
 		m_nSize = size;
 		m_nHealth = m_nSize;
@@ -18,5 +19,9 @@ public class BattleShip {
 // nSize getter method
 	public int getSize() {
 		return m_nSize;
+	}
+// m_bSunk getter method
+	public boolean getSunk() {
+		return m_bSunk;
 	}
 }
