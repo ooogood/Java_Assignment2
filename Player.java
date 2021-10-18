@@ -36,21 +36,30 @@ public class Player {
 			return false;
 		}
 
-		// calculate the result
+		// check if it's a legal firing
 		if( !m_pBoard.isLegalFiring( nRow, nCol ) ) {
 			// case: invalid input
 			System.out.println( "[Invalid] Commander " + m_sName + " fired at an illegal location!" );
 			System.out.println( "(Commander " + m_sName + " is about to be demoted.)" );
 			return false;
 		}
+		// successful firing
+		return onFiring( nRow, nCol );
+	}
+// actions after the player successfully execute a firing
+// return whether the game is over
+	private boolean onFiring( int nRow, int nCol ) {
+		int nSunkShipCountBefore = m_pBoard.getSunkShipCount();
 		if( m_pBoard.fireAt( nRow, nCol ) ) {
 			// case: hit
 			System.out.println( "[Hit] Commander " + m_sName + " hit a ship at ( " + nRow + ", " + nCol + " )! " );
 			System.out.println( "(Blood and wreckage rising to the blue sea surface.)");
-			updateScore();
-			if( hasWon() ) {
-				// case: win
-				System.out.println( "[Won] Commander " + m_sName + " has won the battle! Great fight!" );
+			// update player's score
+			m_nScore += ( m_pBoard.getSunkShipCount() - nSunkShipCountBefore );
+			// check if the game is over
+			if( m_pBoard.hasFinished() ) {
+				// case: game over
+				System.out.println( "[Finished] Commander " + m_sName + " has sunk the last ship!" );
 				return true;
 			}
 		}
@@ -61,12 +70,8 @@ public class Player {
 		}
 		return false;
 	}
-// update score according to the board
-	private void updateScore() {
-		m_nScore = m_pBoard.getSunkShipCount();
-	}
-// has player won
-	private boolean hasWon() {
-		return m_pBoard.getShipCount() == m_pBoard.getSunkShipCount();
+// score getter method
+	public int getScore() {
+		return m_nScore;
 	}
 }

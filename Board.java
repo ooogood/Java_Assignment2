@@ -45,6 +45,10 @@ public class Board {
 	public int getSunkShipCount() {
 		return m_nSunkShipCount;
 	}
+// has the game finished?
+	public boolean hasFinished() {
+		return m_nShipCount == m_nSunkShipCount;
+	}
 // set rader mode
 	public void setRaderMode( boolean bRaderMode ) {
 		m_bRaderMode = bRaderMode;
