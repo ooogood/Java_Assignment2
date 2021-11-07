@@ -127,6 +127,7 @@ public class Board {
 		if( !checkPossibleShapePlacing( pDotRow, pDotCol, nShipHeight, nShipWidth ) )
 			throw new RuntimeException( "The board is too small! Check your game setting!" );
 		// randomly choose a location to put this ship into the board
+		// keep trying until the location can fit the ship
 		do {
 			nShipHeadRow = rd.nextInt( m_nRow - nShipHeight + 1 );
 			nShipHeadCol = rd.nextInt( m_nCol - nShipWidth + 1 );

@@ -1,5 +1,4 @@
 public class Battleship {
-	// todo: I don't know what is "the position" and "active" in the spec mean...
 	private boolean m_bSunk = false;
 	private int m_nHealth = 0;
 	private int m_nSize = 0;
