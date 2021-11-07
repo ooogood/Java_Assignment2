@@ -64,7 +64,6 @@ public class Board {
 	}
 // generate battleship objects on this board
 	private void genShips() {
-		// todo: change these ships to child classes of Battleship
 		// generate small battleships
 		Battleship pShip;
 		for( int i = 0; i < m_pCountOfShips[ 0 ]; ++i ) {
@@ -90,17 +89,18 @@ public class Board {
 		Random rd = new Random();
 		int nSize = pShip.getSize();
 		// describing the shape of the ship with dots
-		//   ex: vertically placed ship with size = 3
-		//   -----
-		//   --*--
-		//   --*--
-		//   --*--
-		//   -----
 		int[] pDotRow = new int[ nSize ];
 		int[] pDotCol = new int[ nSize ];
 		int nShipHeight, nShipWidth, nShipHeadRow, nShipHeadCol;
+		// randomly decide if the ship is vertically or horizontally placed
 		if( rd.nextBoolean() ) {
 			// the ship will be vertically placed
+			// ex:
+			//   -----
+			//   --*--
+			//   --*--
+			//   --*--
+			//   -----
 			for( int i = 0; i < nSize; ++i ) {
 				pDotRow[ i ] = i;
 				pDotCol[ i ] = 0;
@@ -110,6 +110,10 @@ public class Board {
 		}
 		else {
 			// the ship will be horizontally placed
+			// ex:
+			//   -------
+			//   --***--
+			//   -------
 			for( int i = 0; i < nSize; ++i ) {
 				pDotRow[ i ] = 0;
 				pDotCol[ i ] = i;
@@ -122,7 +126,7 @@ public class Board {
 		// if not, then we can assume this board is not big enough and the game is too easy
 		if( !checkPossibleShapePlacing( pDotRow, pDotCol, nShipHeight, nShipWidth ) )
 			throw new RuntimeException( "The board is too small! Check your game setting!" );
-		// randomly put this ship into the board
+		// randomly choose a location to put this ship into the board
 		do {
 			nShipHeadRow = rd.nextInt( m_nRow - nShipHeight + 1 );
 			nShipHeadCol = rd.nextInt( m_nCol - nShipWidth + 1 );

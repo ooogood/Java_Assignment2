@@ -21,10 +21,12 @@ public class Main {
 			System.out.println( brd );
 			if( nPlayerTurn == 0 ) {
 				if( pyr1.takeTurn() )
+					// player 1 finished the game
 					break;
 			}
 			else {
 				if( pyr2.takeTurn() )
+					// player 2 finished the game
 					break;
 			}
 			nPlayerTurn = ( nPlayerTurn + 1 ) % 2;
@@ -32,10 +34,10 @@ public class Main {
 
 		// game ended, show the result
 		System.out.println( "Final result: ");
-		System.out.println( "Commander " + name1 + ", " + pyr1.getScore() + " points" );
-		System.out.println( "Commander " + name2 + ", " + pyr2.getScore() + " points" );
+		System.out.println( "Commander " + name1 + ", " + pyr1.getScore() + " point(s)" );
+		System.out.println( "Commander " + name2 + ", " + pyr2.getScore() + " point(s)" );
 		if( pyr1.getScore() == pyr2.getScore() ) {
-			System.out.println( "Draw! There is no winner in wars" );
+			System.out.println( "Draw! There is no winner in wars." );
 		}
 		else {
 			System.out.println( "The winner is: Commander " + 

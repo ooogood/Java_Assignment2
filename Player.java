@@ -12,7 +12,7 @@ public class Player {
 
 	}
 // take turn in the battleship game
-// return if the game is over
+// return true if the game is over
 	public boolean takeTurn() {
 		// prompt player to input their guess
 		System.out.print( "Commander " + m_sName + ", choose a target to hit(row col):" );
@@ -20,7 +20,7 @@ public class Player {
 		// bonus: cheat code
 		if( userInput.equals( "marco polo" ) ) {
 			m_pBoard.setRaderMode( true );
-			System.out.println( "(Commander " + m_sName + " sacrificed his dignity and summoned the hero spirit of the almighty Marco Polo.)" );
+			System.out.println( "(Commander " + m_sName + " sacrificed his/her dignity and summoned the hero spirit of the almighty Marco Polo.)" );
 			return false;
 		}
 		// parse user input to row and col
